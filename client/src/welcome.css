@@ -1,0 +1,125 @@
+.container {
+  height: 100vh;
+}
+
+.chat-area {
+  position: absolute;
+  width: 269px;
+  height: 186px;
+  left: 77.71px;
+  top: 199px;
+}
+
+.chat-icon {
+  width: 60px !important;
+  height: 60px;
+  position: absolute;
+  width: 67px !important;
+  height: 67px;
+  left: 101.67px;
+  top: 0px;
+  color: #FFFFFF;
+}
+
+.chat-text {
+  position: absolute;
+  height: 80px;
+  left: 0%;
+  right: 0%;
+  top: calc(50% - 80px/2 + 53px);
+  color: #FFFFFF;
+  width: 269px;
+  text-align: center;
+  font-size: 1.625rem !important;
+  line-height: 40px !important;
+}
+
+.sign-in {
+  position: relative;
+  width: 1024px;
+  background: #FFFFFF;
+}
+
+.create-account {
+  position: absolute;
+  height: 54px;
+  left: 611px;
+  top: 30px;
+}
+
+.create-account.MuiGrid-container {
+  width: 400px;
+}
+
+.have-account {
+  position: absolute;
+  height: 19px;
+  left: 0;
+  right: 56.98%;
+  top: calc(50% - 19px/2 - 1.18px);
+  white-space: nowrap;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  text-align: center;
+  color: #B0B0B0;
+}
+
+.register-btn {
+  position: absolute;
+  left: 51.57%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  background: #FFFFFF;
+  box-shadow: 0px 4px 4px rgb(88 133 196 / 15%);
+  width: 170px;
+  height: 54px;
+}
+
+.register-btn .MuiButton-label {
+  color: #3A8DFF;
+}
+
+.welcome-back {
+  font-size: 1.625rem !important;
+}
+
+.welcome-form {
+  position: absolute;
+  width: 380px;
+  height: 358px;
+  left: 522px;
+  top: 170px;
+}
+
+.welcome-form * {
+  width: 100%;
+}
+
+.user-input {
+  margin: 1em 0 !important;
+}
+
+.user-input .MuiInput-underline:before {
+  border-bottom: 1px solid #D5DFEE;
+}
+
+.login-btn {
+  width: 160px;
+  height: 56px;
+  position: absolute;
+  left: 28.95%;
+  right: 28.95%;
+  top: 84.36%;
+  bottom: 0%;
+  background-color: #3A8DFF;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
+  margin: 2rem 0 !important;
+}
+
+.login-btn .MuiButton-label {
+  color: #FFFFFF;
+}
