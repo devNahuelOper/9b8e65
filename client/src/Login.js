@@ -9,6 +9,8 @@ import {
   FormControl,
   TextField,
 } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import { login } from "./store/utils/thunkCreators";
 
 const Login = (props) => {
@@ -28,17 +30,45 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to register?</Typography>
-          <Button onClick={() => history.push("/register")}>Register</Button>
+    <Grid container className="container">
+      <Box
+        sx={{
+          width: 425,
+          background: "linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)",
+          "&:hover": {
+            backgroundColor: "primary.secondary",
+            opacity: [0.9, 0.8, 0.7],
+          },
+        }}
+      >
+        <Grid container item className="chat-area">
+          <FontAwesomeIcon icon={faCommentDots} className="chat-icon"/>
+          <Typography variant="h5" className="chat-text">
+            Converse with anyone in any language
+          </Typography>
         </Grid>
-        <form onSubmit={handleLogin}>
+      </Box>
+      <Box className="sign-in">
+        <Grid container item className="create-account">
+          <Typography className="have-account">
+            Don't have an account?
+          </Typography>
+          <Button
+            className="register-btn"
+            onClick={() => history.push("/register")}
+          >
+            Create account
+          </Button>
+        </Grid>
+        <form className="welcome-form" onSubmit={handleLogin}>
           <Grid>
             <Grid>
+              <Typography variant="h5" className="welcome-back">
+                Welcome back!
+              </Typography>
               <FormControl margin="normal" required>
                 <TextField
+                  className="user-input email"
                   aria-label="username"
                   label="Username"
                   name="username"
@@ -48,14 +78,21 @@ const Login = (props) => {
             </Grid>
             <FormControl margin="normal" required>
               <TextField
-                label="password"
+                className="user-input password"
+                label="Password"
                 aria-label="password"
                 type="password"
                 name="password"
               />
             </FormControl>
             <Grid>
-              <Button type="submit" variant="contained" size="large">
+              <Button
+                className="login-btn"
+                type="submit"
+                color="primary"
+                variant="contained"
+                size="large"
+              >
                 Login
               </Button>
             </Grid>

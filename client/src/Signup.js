@@ -10,6 +10,8 @@ import {
   TextField,
   FormHelperText,
 } from "@material-ui/core";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCommentDots } from "@fortawesome/free-solid-svg-icons";
 import { register } from "./store/utils/thunkCreators";
 
 const Login = (props) => {
@@ -37,17 +39,43 @@ const Login = (props) => {
   }
 
   return (
-    <Grid container justify="center">
-      <Box>
-        <Grid container item>
-          <Typography>Need to log in?</Typography>
-          <Button onClick={() => history.push("/login")}>Login</Button>
+    <Grid container className="container">
+      <Box
+        sx={{
+          width: 425,
+          background: "linear-gradient(180deg, #3A8DFF 0%, #86B9FF 100%)",
+          "&:hover": {
+            backgroundColor: "primary.secondary",
+            opacity: [0.9, 0.8, 0.7],
+          },
+        }}
+      >
+        <Grid container item className="chat-area">
+          <FontAwesomeIcon icon={faCommentDots} className="chat-icon" />
+          <Typography variant="h5" className="chat-text">
+            Converse with anyone in any language
+          </Typography>
         </Grid>
-        <form onSubmit={handleRegister}>
+      </Box>
+      <Box className="sign-in">
+        <Grid container className="create-account">
+          <Typography className="have-account">Need to log in?</Typography>
+          <Button
+            className="register-btn"
+            onClick={() => history.push("/login")}
+          >
+            Login
+          </Button>
+        </Grid>
+        <form className="welcome-form" onSubmit={handleRegister}>
           <Grid>
             <Grid>
+              <Typography variant="h5" className="welcome-back">
+                Create an account.
+              </Typography>
               <FormControl>
                 <TextField
+                  className="user-input"
                   aria-label="username"
                   label="Username"
                   name="username"
@@ -59,6 +87,7 @@ const Login = (props) => {
             <Grid>
               <FormControl>
                 <TextField
+                  className="user-input"
                   label="E-mail address"
                   aria-label="e-mail address"
                   type="email"
@@ -70,6 +99,7 @@ const Login = (props) => {
             <Grid>
               <FormControl error={!!formErrorMessage.confirmPassword}>
                 <TextField
+                  className="user-input"
                   aria-label="password"
                   label="Password"
                   type="password"
@@ -85,6 +115,7 @@ const Login = (props) => {
             <Grid>
               <FormControl error={!!formErrorMessage.confirmPassword}>
                 <TextField
+                  className="user-input"
                   label="Confirm Password"
                   aria-label="confirm password"
                   type="password"
@@ -97,7 +128,13 @@ const Login = (props) => {
                 </FormHelperText>
               </FormControl>
             </Grid>
-            <Button type="submit" variant="contained" size="large">
+            <Button
+              className="login-btn"
+              type="submit"
+              color="primary"
+              variant="contained"
+              size="large"
+            >
               Create
             </Button>
           </Grid>
