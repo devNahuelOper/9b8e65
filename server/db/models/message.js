@@ -10,6 +10,19 @@ const Message = db.define("message", {
     type: Sequelize.INTEGER,
     allowNull: false,
   },
+  read: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false,
+  }
 });
+
+Message.setRead = async (id) => {
+  try {
+    const message = await Message.findByPk(id);
+    message.read = true;
+    message.save();
+  } catch (err) {
+  }
+}
 
 module.exports = Message;
