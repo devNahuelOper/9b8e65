@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
 
 const Home = (props) => {
   const classes = useStyles();
-  const { user, logout, fetchConversations, conversations } = props;
+  const { user, logout, fetchConversations } = props;
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -48,8 +48,7 @@ const Home = (props) => {
       <Grid container component="main" className={classes.root}>
         <CssBaseline />
         <SidebarContainer />
-        {/* pass conversations prop to cause re-render upon sending new message --> causing Messages to update in real time */}
-        <ActiveChat conversations={conversations}/>
+        <ActiveChat />
       </Grid>
     </>
   );
