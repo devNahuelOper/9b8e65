@@ -38,6 +38,9 @@ const Chat = (props) => {
     }
   };
 
+  const { messages = [] } = conversation || {};
+  const unreadMessages = messages.filter(msg => Boolean(!msg.read)).length;
+
   return (
     <Box onClick={() => handleClick(conversation)} className={classes.root}>
       <BadgeAvatar
@@ -46,7 +49,7 @@ const Chat = (props) => {
         online={otherUser.online}
         sidebar={true}
       />
-      <ChatContent conversation={conversation} />
+      <ChatContent unreadMessages={unreadMessages} conversation={conversation} />
     </Box>
   );
 };
