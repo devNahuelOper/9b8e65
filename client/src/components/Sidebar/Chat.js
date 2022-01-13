@@ -39,7 +39,7 @@ const Chat = (props) => {
   };
 
   const { messages = [] } = conversation || {};
-  const unreadMessages = messages.filter(msg => Boolean(!msg.read)).length;
+  const unreadMessages = messages.filter((msg) => !msg.read && msg.senderId === otherUser.id).length;
 
   return (
     <Box onClick={() => handleClick(conversation)} className={classes.root}>
