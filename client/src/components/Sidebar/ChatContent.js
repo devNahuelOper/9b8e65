@@ -18,10 +18,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 12,
     color: "#9CADC8",
     letterSpacing: -0.17,
+    maxWidth: 300,
   },
   unreadBadge: {
     right: 30,
-  }
+  },
 }));
 
 const ChatContent = (props) => {
