@@ -18,10 +18,10 @@ const Message = db.define("message", {
 
 Message.setRead = async (id) => {
   try {
-    const message = await Message.findOne({ where: { id: id }}).then(message => {
+    const message = await Message.findByPk(id).then(async message => {
       if (message) {
         message.read = true;
-        message.save();
+        await message.save();
         return message;
       }
     });
