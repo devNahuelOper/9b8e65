@@ -92,17 +92,13 @@ const sendMessage = (data, body) => {
   });
 };
 
-export const setRead = async id =>  {
-  const { data } = await axios.put("/api/messages", { id });
-  return data;
-}
-
-export const updateMessageRead = id => async dispatch => {
+export const setRead = id => async dispatch =>  {
   try {
-    const data = await setRead(id);
+    const { data } = await axios.put("/api/messages", { id });
     dispatch(setMessageRead(data));
+    return data;
   } catch (error) {
-
+    console.error(error);
   }
 }
 
