@@ -48,6 +48,7 @@ const Input = (props) => {
           placeholder="Type something..."
           value={text}
           name="text"
+          autoComplete="off"
           onChange={handleChange}
         />
       </FormControl>
