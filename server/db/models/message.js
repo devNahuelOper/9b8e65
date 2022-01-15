@@ -18,13 +18,14 @@ const Message = db.define("message", {
 
 Message.setRead = async (id) => {
   try {
-    await  Message.findOne({ where: { id: id }}).then(message => {
+    const message = await Message.findOne({ where: { id: id }}).then(message => {
       if (message) {
         message.read = true;
         message.save();
         return message;
       }
     });
+    return message;
   } catch (error) {
     console.log(error);
   }

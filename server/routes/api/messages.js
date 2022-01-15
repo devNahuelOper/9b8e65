@@ -47,7 +47,7 @@ router.put('/', async (req, res, next) => {
   try {
     const { id } = req.body;
     const message = await Message.setRead(id);
-    res.json(message);
+    return res.json(message);
   } catch (error) {
     next(error);
   }
