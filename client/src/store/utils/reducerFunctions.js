@@ -22,6 +22,22 @@ export const addMessageToStore = (state, payload) => {
   });
 };
 
+export const setMessageReadToStore = (state, message) => {
+  if (message) {
+    const readMessage = { ...message, read: true };
+    const matchedConvo = state.find(convo => convo.id === message.conversationId);
+    if (matchedConvo) {
+      const otherMessages = matchedConvo.messages.filter(msg => msg.id !== message.id);
+      const updatedConvo = {
+        ...matchedConvo,
+        messages: [...otherMessages, readMessage]
+      }
+      const otherConvos = state.filter(convo => convo.id !== updatedConvo.id);
+      return [updatedConvo, ...otherConvos];
+    }
+  }
+}
+
 export const addOnlineUserToStore = (state, id) => {
   return state.map((convo) => {
     if (convo.otherUser.id === id) {
