@@ -20,6 +20,13 @@ const useStyles = makeStyles((theme) => ({
     letterSpacing: -0.17,
     maxWidth: 300,
   },
+  unreadPreviewText: {
+    fontSize: 12,
+    color: "#000",
+    letterSpacing: -0.17,
+    maxWidth: 300,
+    fontWeight: "bold",
+  },
   unreadBadge: {
     right: 30,
   },
@@ -37,7 +44,7 @@ const ChatContent = (props) => {
         <Typography className={classes.username}>
           {otherUser.username}
         </Typography>
-        <Typography className={classes.previewText}>
+        <Typography className={unreadMessageCount ? classes.unreadPreviewText : classes.previewText}>
           {latestMessageText}
         </Typography>
       </Box>
