@@ -28,7 +28,7 @@ const useStyles = makeStyles((theme) => ({
 const ChatContent = (props) => {
   const classes = useStyles();
 
-  const { conversation, unreadMessages } = props;
+  const { conversation, unreadMessageCount } = props;
   const { latestMessageText, otherUser } = conversation;
 
   return (
@@ -41,7 +41,7 @@ const ChatContent = (props) => {
           {latestMessageText}
         </Typography>
       </Box>
-      {Boolean(unreadMessages) && <Badge className={classes.unreadBadge} badgeContent={unreadMessages} color="primary"/>}
+      {Boolean(unreadMessageCount) && <Badge className={classes.unreadBadge} badgeContent={unreadMessageCount} color="primary"/>}
     </Box>
   );
 };

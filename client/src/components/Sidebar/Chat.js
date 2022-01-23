@@ -39,7 +39,7 @@ const Chat = (props) => {
   };
 
   const { messages = [] } = conversation || {};
-  const unreadMessages = messages.filter((msg) => !msg.read && msg.senderId === otherUser.id).length;
+  const unreadMessageCount = messages.filter((msg) => !msg.read && msg.senderId === otherUser.id).length;
 
   return (
     <Box onClick={() => handleClick(conversation)} className={classes.root}>
@@ -49,7 +49,7 @@ const Chat = (props) => {
         online={otherUser.online}
         sidebar={true}
       />
-      <ChatContent unreadMessages={unreadMessages} conversation={conversation} />
+      <ChatContent unreadMessageCount={unreadMessageCount} conversation={conversation} />
     </Box>
   );
 };
