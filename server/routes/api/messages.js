@@ -45,6 +45,15 @@ router.post("/", async (req, res, next) => {
 
 router.put('/', async (req, res, next) => {
   try {
+    if (!req.user) {
+      return res.sendStatus(401);
+    } else {
+      const { userId, otherUserId } = req.body;
+      if (!(userId === req.user.id || otherUserId === req.user.id)) {
+        return res.sendStatus(403);
+      }
+    }
+
     const { id } = req.body;
     const message = await Message.setRead(id);
     return res.json(message);

@@ -92,9 +92,9 @@ const sendMessage = (data, body) => {
   });
 };
 
-export const setRead = id => async dispatch =>  {
+export const setRead = (id, userId, otherUserId) => async dispatch =>  {
   try {
-    const { data } = await axios.put("/api/messages", { id });
+    const { data } = await axios.put("/api/messages", { id, userId, otherUserId });
     dispatch(setMessageRead(data));
     return data;
   } catch (error) {
