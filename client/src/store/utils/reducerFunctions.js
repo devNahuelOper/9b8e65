@@ -23,25 +23,22 @@ export const addMessageToStore = (state, payload) => {
   });
 };
 
-export const setMessageReadToStore = (state, message) => {
-  if (message) {
-    const readMessage = { ...message, read: true };
-    const matchedConvo = state.find(
-      (convo) => convo.id === message.conversationId
-    );
+export const setMessagesReadToStore = (state, messages) => {
+  if (messages?.length) {
+    const [{ conversationId }] = messages;
+    const matchedConvo = state.find(({ id }) => id === conversationId);
     if (matchedConvo) {
-      const otherMessages = matchedConvo.messages.filter(
-        (msg) => msg.id !== message.id
+      const messageIDs = messages.map(msg => msg.id);
+      const otherMessages = matchedConvo.messages.filter(({ id }) => !messageIDs.includes(id));
+      const updatedMessages = [...otherMessages, ...messages];
+      const updatedConvo = { ...matchedConvo, messages: updatedMessages };
+      const otherConvos = state.filter(
+          (convo) => convo.id !== updatedConvo.id
       );
-      const updatedConvo = {
-        ...matchedConvo,
-        messages: [...otherMessages, readMessage],
-      };
-      const otherConvos = state.filter((convo) => convo.id !== updatedConvo.id);
       return [updatedConvo, ...otherConvos];
     }
   }
-};
+}
 
 export const addOnlineUserToStore = (state, id) => {
   return state.map((convo) => {

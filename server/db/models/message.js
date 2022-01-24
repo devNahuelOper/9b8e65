@@ -16,19 +16,4 @@ const Message = db.define("message", {
   }
 });
 
-Message.setRead = async (id) => {
-  try {
-    const message = await Message.findByPk(id).then(async message => {
-      if (message) {
-        message.read = true;
-        await message.save();
-        return message;
-      }
-    });
-    return message;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 module.exports = Message;
