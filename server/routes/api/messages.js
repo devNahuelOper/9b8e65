@@ -50,7 +50,7 @@ router.put('/', async (req, res, next) => {
       return res.sendStatus(401);
     } else {
       const { userId, otherUserId } = req.body;
-      if (!(userId === req.user.id || otherUserId === req.user.id)) {
+      if (userId !== req.user.id && otherUserId !== req.user.id) {
         return res.sendStatus(403);
       }
     }
