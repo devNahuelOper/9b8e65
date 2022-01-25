@@ -30,7 +30,7 @@ export const setMessagesReadToStore = (state, messages) => {
     if (matchedConvo) {
       const messageIDs = messages.map(msg => msg.id);
       const otherMessages = matchedConvo.messages.filter(({ id }) => !messageIDs.includes(id));
-      const updatedMessages = [...otherMessages, ...messages];
+      const updatedMessages = [...otherMessages, ...messages].sort((a,b) => a?.id - b?.id);
       const updatedConvo = { ...matchedConvo, messages: updatedMessages };
       const otherConvos = state.filter(
           (convo) => convo.id !== updatedConvo.id
