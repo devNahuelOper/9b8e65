@@ -5,6 +5,7 @@ import {
   addConversation,
   setNewMessage,
   setSearchedUsers,
+  setMessagesRead,
 } from "../conversations";
 import { gotUser, setFetchingStatus } from "../user";
 
@@ -89,6 +90,19 @@ const sendMessage = (data, body) => {
     recipientId: body.recipientId,
     sender: data.sender,
   });
+};
+
+export const setRead = (conversationId, userId, otherUserId) => async (dispatch) => {
+  try {
+    const { data } = await axios.put("/api/messages", {
+      conversationId,
+      userId,
+      otherUserId,
+    });
+    dispatch(setMessagesRead(data));
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 // message format to send: {recipientId, text, conversationId}

@@ -31,8 +31,8 @@ const Sidebar = (props) => {
       <Search handleChange={handleChange} />
       {conversations
         .filter((conversation) => conversation.otherUser.username.includes(searchTerm))
-        .map((conversation) => {
-          return <Chat conversation={conversation} key={conversation.otherUser.username} />;
+        .map((conversation, i) => {
+          return <Chat conversation={conversation} key={`${conversation.otherUser.username}${i}`} />;
         })}
     </Box>
   );
