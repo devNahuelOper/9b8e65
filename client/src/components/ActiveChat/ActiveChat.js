@@ -23,29 +23,26 @@ const useStyles = makeStyles(() => ({
 
 const ActiveChat = (props) => {
   const classes = useStyles();
-  const { user } = props;
+  const { user, setRead } = props;
   const conversation = props.conversation || {};
+  const { id: conversationId, otherUser, unreadMessageCount, messages } = conversation || {};
 
-  if (props.conversation) {
-    const { id: conversationId, messages, otherUser } = props.conversation;
-    const hasUnreadMessages = messages?.some(message => !message.read && message.senderId === otherUser.id);
-    if (hasUnreadMessages) {
-      props.setRead(conversationId, user?.id, otherUser?.id);
-    }
+  if (unreadMessageCount) {
+    setRead(conversationId, user?.id, otherUser?.id);
   }
 
   return (
     <Box className={classes.root}>
-      {conversation.otherUser && (
+      {otherUser && (
         <>
           <Header
-            username={conversation.otherUser.username}
-            online={conversation.otherUser.online || false}
+            username={otherUser.username}
+            online={otherUser.online || false}
           />
           <Box className={classes.chatContainer}>
             <Messages
-              messages={conversation.messages}
-              otherUser={conversation.otherUser}
+              messages={messages}
+              otherUser={otherUser}
               userId={user.id}
             />
             <Input
