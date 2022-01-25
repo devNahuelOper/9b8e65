@@ -29,7 +29,7 @@ router.post("/", async (req, res, next) => {
         user1Id: senderId,
         user2Id: recipientId,
       });
-      if (sender && sender.id && onlineUsers.includes(sender.id)) {
+      if (onlineUsers.includes(sender.id)) {
         sender.online = true;
       }
     }
@@ -50,7 +50,7 @@ router.put('/', async (req, res, next) => {
       return res.sendStatus(401);
     } else {
       const { userId, otherUserId } = req.body;
-      if (!(userId === req.user.id || otherUserId === req.user.id)) {
+      if (userId !== req.user.id && otherUserId !== req.user.id) {
         return res.sendStatus(403);
       }
     }
