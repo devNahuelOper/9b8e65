@@ -5,6 +5,8 @@ const Message = require("./message");
 const Conversation = db.define("conversation", {});
 
 // find conversation given two user Ids
+/* if adapted for 3 or more users to a conversation, parameters could 
+consist of any number of existing userId's i.e. rest operator ...userIds */
 
 Conversation.findConversation = async function (user1Id, user2Id) {
   const conversation = await Conversation.findOne({
